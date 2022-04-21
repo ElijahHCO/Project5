@@ -7,7 +7,7 @@ const SkiContainer = () => {
     const [newSkiServerError, setNewSkiServerError] = useState("")
     const createNewSki = async (newSki) => {
         try{
-            const apiResponse = await fetch("https://snowshelves2.herokuapp.com/equips", {
+            const apiResponse = await fetch("https://project5-backend.herokuapp.com/equips", {
                 method: "POST",
                 body: JSON.stringify(newSki),
                 headers: {
@@ -48,7 +48,7 @@ const SkiContainer = () => {
     }
     const getSkis = async () => {
         try {
-            const skis = await fetch('https://snowshelves2.herokuapp.com/equips/ski', {
+            const skis = await fetch('https://project5-backend.herokuapp.com/equips/ski', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -63,7 +63,7 @@ const SkiContainer = () => {
     }
     const updateSki = async (idToUpdate ,skisToUpdate) => {
         try{
-            const apiResponse = await fetch(`https://snowshelves2.herokuapp.com/equips/${idToUpdate}`, {
+            const apiResponse = await fetch(`https://project5-backend.herokuapp.com/equips/${idToUpdate}`, {
                 method: "PUT",
                 body: JSON.stringify(skisToUpdate),
                 headers: {

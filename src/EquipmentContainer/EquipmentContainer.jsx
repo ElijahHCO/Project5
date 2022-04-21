@@ -8,7 +8,7 @@ const EquipmentContainer = () => {
     const [newEquipServerError, setNewEquipServerError] = useState("")
     const createNewEquip = async (newEquip) => {
         try {
-            const apiResponse = await fetch("https://snowshelves2.herokuapp.com/equips", {
+            const apiResponse = await fetch("https://project5-backend.herokuapp.com/equips", {
                 method: "POST",
                 body: JSON.stringify(newEquip),
                 headers: {
@@ -28,7 +28,7 @@ const EquipmentContainer = () => {
     }
     const deleteEquip = async (idToDelete) => {
         try {
-            const apiResponse = await fetch(`https://snowshelves2.herokuapp.com/equips/${idToDelete}`, {
+            const apiResponse = await fetch(`https://project5-backend.herokuapp.com/equips/${idToDelete}`, {
                 method: "DELETE"
             })
             const parsedResponse = await apiResponse.json()
@@ -55,7 +55,7 @@ const EquipmentContainer = () => {
     }
     const updateEquip = async (idToUpdate, equipToUpdate) => {
         try {
-            const apiResponse = await fetch(`https://snowshelves2.herokuapp.com/equips/${idToUpdate}`, {
+            const apiResponse = await fetch(`https://project5-backend.herokuapp.com/equips/${idToUpdate}`, {
                 method: "PUT",
                 body: JSON.stringify(equipToUpdate),
                 headers: {
