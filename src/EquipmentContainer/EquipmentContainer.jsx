@@ -46,7 +46,12 @@ const EquipmentContainer = () => {
     }
     const getEquips = async () => {
         try {
-            const equips = await fetch('https://project5-backend.herokuapp.com/equips',{mode: 'no-cors'} )
+            const equips = await fetch('https://project5-backend.herokuapp.com/equips',{mode: 'no-cors'} , {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
             const parsedEquips = await equips.json();
             setEquips(parsedEquips.data)
         } catch (err) {
