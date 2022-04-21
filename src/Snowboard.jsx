@@ -10,4 +10,5 @@ function Snowboard() {
       </div>
     );
   }
-export default Snowboard
+  
+export default Snowboard;
