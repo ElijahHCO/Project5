@@ -9,7 +9,7 @@ const SingleLocationComponent = (props) => {
     const [updateLocation, setUpdateLocation] = useState({
         name: props.location.name,
         address: props.location.address,
-        id: props.location.id
+        _id: props.location._id
     })
 
     const handleInputChange = (e) => {
@@ -20,7 +20,7 @@ const SingleLocationComponent = (props) => {
     }
     const submitUpdateLocation = (e) => {
         e.preventDefault();
-        props.updateLocation(props.location.id, updateLocation)
+        props.updateLocation(props.location._id, updateLocation)
         setShowing(false)
     }
 
@@ -30,9 +30,9 @@ const SingleLocationComponent = (props) => {
                 {props.location.name}</h2>
             <h3>Address: <br /> 
                 {props.location.address}</h3>
-            <h4>ID: {props.location.id}</h4>
+            <h4>ID: {props.location._id}</h4>
             <button className="delete-edit-btn" onClick={() => {
-                props.deleteLocation(props.location.id)
+                props.deleteLocation(props.location._id)
             }}>Delete</button>
             {
                 showing ?

@@ -11,6 +11,7 @@ const SingleSnowboardComponent = (props) => {
         productModel: props.snows.productModel,
         quantity: props.snows.quantity,
         rented: props.snows.rented,
+        location: props.snows.location,
         _id: props.snows._id 
     })
   
@@ -46,6 +47,7 @@ const SingleSnowboardComponent = (props) => {
             :
             <p>Currently Rented: 0</p>
             }
+            <p>Location: {props.snows.location?.name}</p>
             <button className="delete-edit-btn" onClick={() => {
                 props.deleteSnows(props.snows._id)
             }}>Delete</button>

@@ -1,12 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import NewEquipComponent from './NewEquipComponent/NewEquipComponent';
 import SingleEquipComponent from './SingleEquipComponent.jsx/SingleEquipComponent';
+import LocationContext from '../Context';
 
 
 const EquipmentContainer = () => {
     const [equips, setEquips] = useState([])
+    const {locations, setLocations} = useContext(LocationContext)
     const [newEquipServerError, setNewEquipServerError] = useState("")
+    const getLocations = async () => {
+        try {
+            const locations = await fetch('https://project5-backend.herokuapp.com/locations/')
+            const parsedLocations = await locations.json();
+            setLocations(parsedLocations.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
     const createNewEquip = async (newEquip) => {
+        newEquip.location = [newEquip.location]
         try {
             const apiResponse = await fetch("https://project5-backend.herokuapp.com/equips", {mode: 'no-cors'} ,{
                 method: "POST",
@@ -46,13 +58,9 @@ const EquipmentContainer = () => {
     }
     const getEquips = async () => {
         try {
-            const equips = await fetch('https://project5-backend.herokuapp.com/equips',{mode: 'no-cors'} , {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
+            const equips = await fetch('https://project5-backend.herokuapp.com/equips')
             const parsedEquips = await equips.json();
+            console.log(parsedEquips)
             setEquips(parsedEquips.data)
         } catch (err) {
             console.log(err)
@@ -79,17 +87,19 @@ const EquipmentContainer = () => {
         }
     }
     useEffect(() => {
-        getEquips()
+        getEquips();  
+        getLocations();
     }, [])
     return (
         <div className="container-div">
             <h2 className="header-two">Equipment</h2>
             <div className="display-div">
                 <NewEquipComponent
+                    locations={locations}
                     newEquipServerError={newEquipServerError}
                     createNewEquip={createNewEquip}></NewEquipComponent>
                 {equips.reverse().map((equip) => {
-                    return <SingleEquipComponent key={equip._id} equip={equip} deleteEquip={deleteEquip} updateEquip={updateEquip}></SingleEquipComponent>
+                    return <SingleEquipComponent key={equip._id} locations={locations} equip={equip} deleteEquip={deleteEquip} updateEquip={updateEquip}></SingleEquipComponent>
                 })}
             </div>
         </div>

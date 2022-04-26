@@ -12,6 +12,7 @@ const SingleSkiComponent = (props) => {
         productModel: props.skis.productModel,
         quantity: props.skis.quantity,
         rented: props.skis.rented,
+        location: props.skis.location,
         _id: props.skis._id
     })
 
@@ -47,6 +48,7 @@ const SingleSkiComponent = (props) => {
                 :
                 <p>Currently Rented: 0</p>
             }
+            <p>Location: {props.skis.location[0].name}</p>
             <button className="delete-edit-btn" onClick={() => {
                 props.deleteSkis(props.skis._id)
             }}>Delete</button>
@@ -62,6 +64,17 @@ const SingleSkiComponent = (props) => {
                             Model: <input onChange={handleInputChange} type="text" name="productModel" value={updateSki.productModel} />
                             Quantity: <input onChange={handleInputChange} type="number" name="quantity" value={updateSki.quantity} />
                             Rented: <input onChange={handleInputChange} type="number" name="rented" value={updateSki.rented} />
+                            Location: <select onChange={handleInputChange} type="number" name="location" value={updateSki.location}>
+                                <option></option> {props.locations && props.locations.map((location)=>{
+                                    return <option
+                                    key={location.name}
+                                    value={location._id}
+                                    >
+                                        {location.name}
+                                    </option>
+                                })
+                            }
+                                </select>
                             <button className="delete-edit-btn" type="submit">Submit</button>
                         </form>
                     </div>

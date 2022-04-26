@@ -11,6 +11,7 @@ const NewEquipComponent = (props) => {
         productBrand: "",
         productModel: "",
         quantity: 0,
+        location: ""
     })
     const handleInputChange = (e) => {
         console.log(e.target.value)
@@ -35,7 +36,8 @@ const NewEquipComponent = (props) => {
                 type: "",
                 productBrand: "",
                 productModel: "",
-                quantity: 0
+                quantity: 0,
+                location: ""
             })
             setIsValidState({
                 valid: true,
@@ -61,6 +63,17 @@ const NewEquipComponent = (props) => {
                             Brand: <input onChange={handleInputChange} type="text" name="productBrand" value={newEquip.productBrand} />
                             Model: <input onChange={handleInputChange} type="text" name="productModel" value={newEquip.productModel} />
                             Quantity: <input onChange={handleInputChange} type="number" name="quantity" value={newEquip.quantity} />
+                            Location: <select onChange={handleInputChange} type="number" name="location" value={newEquip.location}>
+                                <option></option> {props.locations.map((location)=>{
+                                    return <option
+                                    key={location.name}
+                                    value={location._id}
+                                    >
+                                        {location.name}
+                                    </option>
+                                })
+                            }
+                                </select>
                             <button className="delete-edit-btn" type="submit">Submit</button>
                         </form>
                     </div>

@@ -11,6 +11,7 @@ const NewSnowboardComponent = (props) => {
         productBrand: "",
         productModel: "",
         quantity: 0,
+        location: ""
     })
     const handleInputChange = (e) => {
         console.log(e.target.value)
@@ -27,7 +28,8 @@ const NewSnowboardComponent = (props) => {
             type: "Snowboard",
             productBrand: "",
             productModel: "",
-            quantity: 0
+            quantity: 0,
+            location: ""
         })
         setIsValidState({
             valid: true,
@@ -50,6 +52,17 @@ const NewSnowboardComponent = (props) => {
                             Brand: <input onChange={handleInputChange} required min="2" type="text" name="productBrand" value={newSnow.productBrand} />
                             Model: <input onChange={handleInputChange} required min="2" type="text" name="productModel" value={newSnow.productModel} />
                             Quantity: <input onChange={handleInputChange} required type="number" name="quantity" value={newSnow.quantity} />
+                            Location: <select onChange={handleInputChange} type="number" name="location" value={newSnow.location}>
+                                <option></option> {props.locations.map((location)=>{
+                                    return <option
+                                    key={location.name}
+                                    value={location._id}
+                                    >
+                                        {location.name}
+                                    </option>
+                                })
+                            }
+                                </select>
                             <button className="delete-edit-btn" type="submit">Submit</button>
                         </form>
                     </div>
