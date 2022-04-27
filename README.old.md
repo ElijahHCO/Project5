@@ -4,15 +4,14 @@ For my fifth and final GA project. I plan to continue working on my SnowShelves 
 I will move my Project4 version to my Project3 Express version
 
 Goals(Requirements):
-Update Project3 to reflect Project4
+Update Project3 to reflect Project4 X
 Add User/Auth Login
-Refine Styling
-Add a Type Model
-Make the Location Display Location Name instead of ID
+Make the Location Display location.name instead of location._id
 
 
 Stretch Goals:
-
+Add a Type Model
+Refine Styling
 Make a Sort Option
 Design a Sort/Search Box
 Purchase a Legit Domain

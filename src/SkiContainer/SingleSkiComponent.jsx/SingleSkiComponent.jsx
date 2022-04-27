@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import LocationContext from "../../Context";
 
 const SingleSkiComponent = (props) => {
+    const {locations} = useContext(LocationContext)
     const [isValidState, setIsValidState] = useState({ valid: true, message: "" })
     const [showing, setShowing] = useState(false)
     const toggleShowing = () => {
@@ -65,7 +67,7 @@ const SingleSkiComponent = (props) => {
                             Quantity: <input onChange={handleInputChange} type="number" name="quantity" value={updateSki.quantity} />
                             Rented: <input onChange={handleInputChange} type="number" name="rented" value={updateSki.rented} />
                             Location: <select onChange={handleInputChange} type="number" name="location" value={updateSki.location}>
-                                <option></option> {props.locations && props.locations.map((location)=>{
+                                <option></option> {locations.length && locations.map((location)=>{
                                     return <option
                                     key={location.name}
                                     value={location._id}

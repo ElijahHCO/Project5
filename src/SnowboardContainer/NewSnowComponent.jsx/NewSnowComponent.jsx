@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import LocationContext from "../../Context";
 
 const NewSnowboardComponent = (props) => {
+    const {locations} = useContext(LocationContext)
     const [showing, setShowing] = useState(false)
     const toggleShowing = () => {
         setShowing(!showing)
@@ -49,11 +51,12 @@ const NewSnowboardComponent = (props) => {
                         </div>
                         <form className="form" onSubmit={(e)=>submitNewSnow(e)}>
                             {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
+                            {props.NewItemServerError ? <p className="form-error">{props.newItemServerError}</p> : null}
                             Brand: <input onChange={handleInputChange} required min="2" type="text" name="productBrand" value={newSnow.productBrand} />
                             Model: <input onChange={handleInputChange} required min="2" type="text" name="productModel" value={newSnow.productModel} />
                             Quantity: <input onChange={handleInputChange} required type="number" name="quantity" value={newSnow.quantity} />
                             Location: <select onChange={handleInputChange} type="number" name="location" value={newSnow.location}>
-                                <option></option> {props.locations.map((location)=>{
+                                <option></option> {locations.length && locations.map((location)=>{
                                     return <option
                                     key={location.name}
                                     value={location._id}

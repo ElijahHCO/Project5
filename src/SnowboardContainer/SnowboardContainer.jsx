@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import LocationContext from '../Context';
 import NewSnowboardComponent from './NewSnowComponent.jsx/NewSnowComponent';
 import SingleSnowboardComponent from './SingleSnowComponent.jsx/SingleSnowComponent';
 
 const SnowboardContainer = () => {
+    const {locations} = useContext(LocationContext)
     const [snows, setSnows] = useState([])
     const [newSnowServerError, setNewSnowServerError] = useState("")
     const createNewSnow = async (newSnow) => {
@@ -89,6 +91,7 @@ const SnowboardContainer = () => {
             <h2 className="header-two">Equipment</h2>
             <div className="display-div">
             <NewSnowboardComponent
+                locations={locations}
                 newSnowServerError={newSnowServerError}
                 createNewSnow={createNewSnow}></NewSnowboardComponent>
             {snows.map((snows) => {

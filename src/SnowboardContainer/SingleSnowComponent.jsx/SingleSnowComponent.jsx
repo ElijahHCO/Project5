@@ -1,6 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react";
+import LocationContext from "../../Context";
 
 const SingleSnowboardComponent = (props) => {
+    const {locations} = useContext(LocationContext)
     const [showing, setShowing] = useState(false)
     const toggleShowing = () => {
         setShowing(!showing)
@@ -47,7 +49,7 @@ const SingleSnowboardComponent = (props) => {
             :
             <p>Currently Rented: 0</p>
             }
-            <p>Location: {props.snows.location?.name}</p>
+            <p>Location: {props.snows.location[0].name}</p>
             <button className="delete-edit-btn" onClick={() => {
                 props.deleteSnows(props.snows._id)
             }}>Delete</button>
@@ -62,6 +64,17 @@ const SingleSnowboardComponent = (props) => {
                             Model: <input onChange={handleInputChange} type="text" name="productModel" value={updateSnow.productModel} />
                             Quantity: <input onChange={handleInputChange} type="number" name="quantity" value={updateSnow.quantity} />
                             Rented: <input onChange={handleInputChange} type="number" name="rented" value={updateSnow.rented}/>
+                            Location: <select onChange={handleInputChange} type="number" name="location" value={updateSnow.locations}>
+                                <option></option> {locations.length && locations.map((location)=>{
+                                    return <option
+                                    key={location.name}
+                                    value={location._id}
+                                    >
+                                        {location.name}
+                                    </option>
+                                })
+                            }
+                                </select>
                             <button className="delete-edit-btn" type="submit">Submit</button>
                         </form>
                     </div>

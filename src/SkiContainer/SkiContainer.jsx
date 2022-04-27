@@ -32,7 +32,7 @@ const SkiContainer = () => {
     }
     const deleteSkis = async (idToDelete) => {
         try {
-            const apiResponse = await fetch(`https://snowshelves2.herokuapp.com/equips/${idToDelete}`, {
+            const apiResponse = await fetch(`https://project5-backend.herokuapp.com/equips/${idToDelete}`, {
                 method: "DELETE"
             })
             const parsedResponse = await apiResponse.json()
@@ -65,7 +65,7 @@ const SkiContainer = () => {
     }
     const updateSki = async (idToUpdate ,skisToUpdate) => {
         try{
-            const apiResponse = await fetch(`https://project5-backend.herokuapp.com/equips/${idToUpdate}`, {
+            const apiResponse = await fetch(`https://project5-backend.herokuapp.com/equips/${idToUpdate}`,{
                 method: "PUT",
                 body: JSON.stringify(skisToUpdate),
                 headers: {

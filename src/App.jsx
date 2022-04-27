@@ -4,7 +4,7 @@ import Nav from './Nav';
 import Ski from './Ski';
 import Snowboard from './Snowboard';
 import Locations from './Locations';
-import EquipmentContainer from './EquipmentContainer/EquipmentContainer';
+import Home from './Home';
 import LocationContext from './Context';
 import { useContext, useMemo, useState, useEffect } from 'react';
 function App() {
@@ -33,7 +33,7 @@ useEffect(() => {
             <Route path="/ski" element={<Ski />} />
             <Route path="/snowboard" element={<Snowboard />} />
             <Route path="/locations" element={<Locations />} />
-            <Route path="/" element={<EquipmentContainer />} />
+            <Route path="/" element={<Home />} />
           </Routes>
         </div>
         <footer className="footer">SnowShelves</footer>
