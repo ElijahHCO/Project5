@@ -4,7 +4,8 @@ import './App.css';
 function Home() {
     return (
         <div>
-            Welcome to Snowshelves
+            <h1 className="home-header">Welcome to Snowshelves</h1>
+            
         </div>
     );
 }
