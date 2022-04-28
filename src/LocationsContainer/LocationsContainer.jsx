@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import Nav from '../Nav';
 import NewLocationComponent from './NewLocationContainer.jsx/NewLocationContainer';
 import SingleLocationComponent from './SingleLocationContainer/SingleLocationContainer';
 import LocationContext from '../Context';
@@ -84,7 +85,7 @@ const LocationsContainer = () => {
                     return <SingleLocationComponent key={location._id}  location={location} deleteLocation={deleteLocation} updateLocation={updateLocation}></SingleLocationComponent>
                 }) : null}
             </div>
-        </div>
+       </div>
     )
 }
 

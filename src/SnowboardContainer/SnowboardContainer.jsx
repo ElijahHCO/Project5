@@ -1,4 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
+import { Router } from 'react-router';
+import Nav from '../Nav';
 import LocationContext from '../Context';
 import NewSnowboardComponent from './NewSnowComponent.jsx/NewSnowComponent';
 import SingleSnowboardComponent from './SingleSnowComponent.jsx/SingleSnowComponent';
