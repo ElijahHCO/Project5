@@ -17,10 +17,11 @@ const SkiContainer = () => {
                 }
             })
             const parsedResponse = await apiResponse.json()
-            const newSkis = parsedResponse.data
+            // const newSkis = parsedResponse.data
             console.log(parsedResponse)
             if (parsedResponse.success) {
-                setSkis([newSkis, ...skis])
+                getSkis()
+                // setSkis([newSkis, ...skis])
                 console.log(skis)
             } else {
                 setNewSkiServerError(parsedResponse.data)
@@ -74,8 +75,9 @@ const SkiContainer = () => {
             })
             const parsedResponse = await apiResponse.json();
             if(parsedResponse.success){
-                const newSkis = skis.map(skis => skis._id === idToUpdate ? skisToUpdate : skis)
-                setSkis(newSkis)
+                // const newSkis = skis.map(skis => skis._id === idToUpdate ? skisToUpdate : skis)
+                // setSkis(newSkis)
+                getSkis()
             }else{
         
             }

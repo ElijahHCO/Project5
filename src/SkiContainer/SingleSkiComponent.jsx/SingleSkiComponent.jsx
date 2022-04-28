@@ -66,17 +66,34 @@ const SingleSkiComponent = (props) => {
                             Model: <input onChange={handleInputChange} type="text" name="productModel" value={updateSki.productModel} />
                             Quantity: <input onChange={handleInputChange} type="number" name="quantity" value={updateSki.quantity} />
                             Rented: <input onChange={handleInputChange} type="number" name="rented" value={updateSki.rented} />
-                            Location: <select onChange={handleInputChange} type="number" name="location" value={updateSki.location}>
-                                <option></option> {locations.length && locations.map((location)=>{
-                                    return <option
-                                    key={location.name}
-                                    value={location._id}
-                                    >
-                                        {location.name}
-                                    </option>
+                            Location: <select onChange={handleInputChange} type="number" name="location" value={updateSki.locations}>
+                                {locations.length && locations.map((location) => {
+                                    const selected = props.skis.location[0].name === location.name;
+
+                                    if (selected) {
+                                        return (
+                                            <option
+                                                key={location.name}
+                                                value={location._id}
+                                                selected
+                                            >
+                                                {location.name}
+                                            </option>
+                                        )
+                                    } else {
+                                        return (
+                                            <option
+                                                key={location.name}
+                                                value={location._id}
+                                            >
+                                                {location.name}
+                                            </option>
+                                        )
+                                    }
+
                                 })
-                            }
-                                </select>
+                                }
+                            </select>
                             <button className="delete-edit-btn" type="submit">Submit</button>
                         </form>
                     </div>

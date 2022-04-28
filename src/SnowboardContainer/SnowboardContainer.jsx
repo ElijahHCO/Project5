@@ -17,10 +17,11 @@ const SnowboardContainer = () => {
                 }
             })
             const parsedResponse = await apiResponse.json()
-            const newSnows = parsedResponse.data
+            // const newSnows = parsedResponse.data
             console.log(parsedResponse)
             if (parsedResponse.success) {
-                setSnows([newSnows, ...snows])
+                getSnows()
+                // setSnows([newSnows, ...snows])
                 console.log(snows)
             } else {
                 setNewSnowServerError(parsedResponse.data)
@@ -74,8 +75,9 @@ const SnowboardContainer = () => {
             })
             const parsedResponse = await apiResponse.json();
             if(parsedResponse.success){
-                const newSnows = snows.map(snows => snows._id === idToUpdate ? snowsToUpdate : snows)
-                setSnows(newSnows)
+                // const newSnows = snows.map(snows => snows._id === idToUpdate ? snowsToUpdate : snows)
+                // setSnows(newSnows)
+                getSnows()
             }else{
         
             }
