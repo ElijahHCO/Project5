@@ -45,3 +45,8 @@ useEffect(() => {
 }
 
 export default App;
+
+
+//const navigate = useNavigate()
+//import {useNavigate} from ‘react-router-router’
+//navigate(‘/‘, {replace: true})
