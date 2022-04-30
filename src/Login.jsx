@@ -1,79 +1,56 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom"
 
 
+const Login = () => {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [loginError, setLoginError] = useState(false)
+    const navigate = useNavigate()
 
-class Login extends Component {
-    constructor() {
-        super()
-        this.state = {
-            fullName: "",
-            username: "",
-            email: "",
-            password: ""
-        }
-        this.changeFirstName = this.changeFirstName.bind(this)
-        this.changeUsername = this.changeUsername.bind(this)
-        this.changeEmail = this.changeEmail.bind(this)
-        this.changePassword = this.changePassword.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-    }
-    changeFirstName(event) {
-        this.setState({
-            firstName: event.target.value
-        })
-    }
-    changeUsername(event) {
-        this.setState({
-            username: event.target.value
-        })
-    }
-    changeEmail(event) {
-        this.setState({
-            email: event.target.value
-        })
-    }
-    changePassword(event) {
-        this.setState({
-            password: event.target.value
-        })
-    }
-    onSubmit(e) {
+    const changeEmail = (event) => setEmail(event.target.value)
+    const changePassword = (event) => setPassword(event.target.value)
+    const onSubmit = (e) => {
         e.preventDefault()
-        const registered = {
-            firstName: this.state.firstName,
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
+        const credentials = {
+            email: email,
+            password: password
         }
-        axios.post("http://localhost:3001/user/signup", registered)
-            .then(response => console.log(response.data))
+        axios.post("http://localhost:3001/user/login", credentials)
+            .then(response => {
+                console.log(response)
+                if (response.data) {
+                    localStorage.setItem("loggedIn", true);
+                    navigate("/")
+                } else {
+                    setLoginError(true)
+                }
+            })
 
-       this.setState({
-           firstName: "",
-           username: "",
-           email: "",
-           password: ""
-       })
+        //    this.setState({
+        //        firstName: "",
+        //        username: "",
+        //        email: "",
+        //        password: ""
+        //    })
     }
-    render() {
-        return (
-            <div>
-                <div className="container">
-                    <div className="form-div">
-                        <form onSubmit={this.onSumbit} className="form">
-                            <h3 className="Header">SignUp</h3>
-                            <input type="text" placeholder="First Name" onChange={this.changeFirstName} value={this.state.firstName} className="form-control form-group" />
-                            <input type="text" placeholder="Username" onChange={this.changeUsername} value={this.state.username} className="form-control form-group" />
-                            <input type="email" placeholder="Email" onChange={this.changeEmail} value={this.state.email} className="form-control form-group" />
-                            <input type="password" placeholder="Password" onChange={this.changePassword} value={this.state.password} className="form-control form-group" />
-                            <button type="submit" className="delete-edit-btn">Submit</button>
-                        </form>
-                    </div>
+
+    return (
+        <div>
+            <div className="container">
+                <div className="form-div">
+                    <form className="form">
+                        <h3 className="Header">Login</h3>
+                        <input type="email" placeholder="Email" onChange={changeEmail} value={email} className="form-control form-group" />
+                        <input type="password" placeholder="Password" onChange={changePassword} value={password} className="form-control form-group" />
+                        <button type="submit" className="delete-edit-btn" onClick={onSubmit}>Submit</button>
+                    </form>
+                    {loginError ? <p>Wrong password</p> : null}
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Login

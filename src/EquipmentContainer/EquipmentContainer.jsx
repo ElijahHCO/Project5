@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import NewEquipComponent from './NewEquipComponent/NewEquipComponent';
 import SingleEquipComponent from './SingleEquipComponent.jsx/SingleEquipComponent';
-import LocationContext from '../Context';
+import LocationContext from '../LocationContext';
 
 
 const EquipmentContainer = () => {

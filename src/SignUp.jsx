@@ -1,9 +1,11 @@
-import React, {useState } from 'react';
-import axios from 'axios'
-
-
+import React, {useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+// import AuthContext from './AuthContext';
 
 const Signup =()=> {
+    const navigate = useNavigate()
+    const {auth, setAuth} = useState(null);
     const [user, setUser]= useState({
         firstName: "",
         username: "",
@@ -11,6 +13,12 @@ const Signup =()=> {
         password: "",
         confirmPassword: ""
     })
+
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem("loggedIn");
+        
+    }, []);
+
     const handleInputChange = (e) => {
         const {name, value} = e.target
         setUser(prev => {
@@ -26,7 +34,15 @@ const Signup =()=> {
         e.preventDefault()
 
         axios.post("http://localhost:3001/user/signup", user)
-            .then(response => console.log(response.data))
+            .then(response =>{ 
+                console.log(response.data)
+                console.log(response)
+                if(response.statusText == "OK"){
+                    localStorage.setItem("loggedIn", "true")
+                    setAuth(true)
+                    navigate("/")
+                }
+            })
        setUser({
             firstName: "",
             username: "",

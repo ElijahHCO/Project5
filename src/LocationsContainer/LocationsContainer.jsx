@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import Nav from '../Nav';
 import NewLocationComponent from './NewLocationContainer.jsx/NewLocationContainer';
 import SingleLocationComponent from './SingleLocationContainer/SingleLocationContainer';
-import LocationContext from '../Context';
+import LocationContext from '../LocationContext';
 
 const LocationsContainer = () => {
     const {locations, setLocations} = useContext(LocationContext)

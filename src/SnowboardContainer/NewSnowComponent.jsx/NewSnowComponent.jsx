@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import LocationContext from "../../Context";
+import LocationContext from "../../LocationContext";
 
 const NewSnowboardComponent = (props) => {
     const {locations} = useContext(LocationContext)

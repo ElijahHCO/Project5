@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { Router } from 'react-router';
 import Nav from '../Nav';
-import LocationContext from '../Context';
+import LocationContext from '../LocationContext';
 import NewSkiComponent from './NewSkiComponent.jsx/NewSkiComponent';
 import SingleSkiComponent from './SingleSkiComponent.jsx/SingleSkiComponent';
 
