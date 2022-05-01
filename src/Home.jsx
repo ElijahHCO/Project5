@@ -20,9 +20,9 @@ function Home() {
 
   return (
     <div>
-      <h1 className="home-header">Welcome to Snowshelves</h1>
       <button type="submit" className="delete-edit-btn" onClick={logout}>Logout</button>
       <Nav></Nav>
+      <h1 className="home-header">Welcome to Snowshelves</h1>
     </div>
   );
 }
