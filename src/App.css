@@ -20,6 +20,7 @@ nav {
     border: none;
     border-radius: 1em;
 }
+
 .nav-links {
     background-color: black;
     width: 10em;
@@ -39,12 +40,14 @@ nav li {
     list-style: none;
     padding: 1em;
 }
+
 .logo{
     margin: 0;
 }
+
 .container {
     padding: 2em;
-    margin: 4em;
+    margin: 1em;
 }
 
 .home-header {

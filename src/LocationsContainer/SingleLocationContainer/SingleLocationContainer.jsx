@@ -30,7 +30,6 @@ const SingleLocationComponent = (props) => {
                 {props.location.name}</h2>
             <h3>Address: <br /> 
                 {props.location.address}</h3>
-            <h4>ID: {props.location._id}</h4>
             <button className="delete-edit-btn" onClick={() => {
                 props.deleteLocation(props.location._id)
             }}>Delete</button>
