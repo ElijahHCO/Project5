@@ -30,7 +30,7 @@ const Signup =()=> {
         console.log(e)
         e.preventDefault()
 
-        axios.post("http://localhost:3001/user/signup", user)
+        axios.post("https://project5-backend.herokuapp.com/user/signup", user)
             .then(response =>{ 
                 console.log(response.data)
                 console.log(response)

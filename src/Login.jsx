@@ -21,7 +21,7 @@ const Login = () => {
             email: email,
             password: password
         }
-        axios.post("http://localhost:3001/user/login", credentials)
+        axios.post("https://project5-backend.herokuapp.com/user/login", credentials)
             .then(response => {
                 console.log(response)
                 if (response.data) {
