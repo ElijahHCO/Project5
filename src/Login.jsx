@@ -11,6 +11,10 @@ const Login = () => {
 
     const changeEmail = (event) => setEmail(event.target.value)
     const changePassword = (event) => setPassword(event.target.value)
+    const onSignUp = (e) => {
+        e.preventDefault()
+        navigate('/signup')
+    }
     const onSubmit = (e) => {
         e.preventDefault()
         const credentials = {
@@ -27,6 +31,7 @@ const Login = () => {
                     setLoginError(true)
                 }
             })
+
 
         //    this.setState({
         //        firstName: "",
@@ -45,6 +50,7 @@ const Login = () => {
                         <input type="email" placeholder="Email" onChange={changeEmail} value={email} className="form-control form-group" />
                         <input type="password" placeholder="Password" onChange={changePassword} value={password} className="form-control form-group" />
                         <button type="submit" className="delete-edit-btn" onClick={onSubmit}>Submit</button>
+                        <button type="submit" className="sign-up-btn" onClick={onSignUp}>Sign Up</button>
                     </form>
                     {loginError ? <p>Wrong password</p> : null}
                 </div>
