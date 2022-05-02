@@ -18,11 +18,12 @@ Purchase a Legit Domain
 
 
 
-With SnowShelves(Project5) I have converted my Project3 to reflect Project4 and added a couple new features. 
+With SnowShelves(Project5) I have converted my Project3(Express) to reflect Project4(Django) and added a couple new features. 
 
 I have added the Location.name display to each item, as well as,  a login/logout feature to secure the data. 
 
 In the future i hope to come back and fully authenticate the login/logout process, and to redesign the layout completely.
+I want to also finish the password/confirm password combination
 I would say the app is still in a develeopment stage for sure.
 
 I am happy with my progress on this project and plan to add it to the portfolio tomorrow. 
