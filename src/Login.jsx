@@ -49,7 +49,7 @@ const Login = () => {
                         <h3 className="Header">Login</h3>
                         <input type="email" placeholder="Email" onChange={changeEmail} value={email} className="form-control form-group" />
                         <input type="password" placeholder="Password" onChange={changePassword} value={password} className="form-control form-group" />
-                        <button type="submit" className="delete-edit-btn" onClick={onSubmit}>Submit</button>
+                        <button type="submit" className="delete-edit-btn" onClick={onSubmit}>Login</button>
                         <button type="submit" className="sign-up-btn" onClick={onSignUp}>Sign Up</button>
                     </form>
                     {loginError ? <p>Wrong password</p> : null}
